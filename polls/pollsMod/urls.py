@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 
 # url maps to the views/index function
+# name is used to specify the name of the route for links in the template views
 urlpatterns = [
     # /polls/
     url(r'^$', views.index, name='index'),

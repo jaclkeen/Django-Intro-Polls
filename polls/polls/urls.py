@@ -13,10 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+# namespace is used to specify which module a particular view belongs to. Is used on links in templates
 from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^polls/', include('pollsMod.urls')),
+    url(r'^polls/', include('pollsMod.urls', namespace="polls")),
     url(r'^admin/', admin.site.urls),
 ]
