@@ -5,10 +5,11 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Choice, Question
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 # This is the simplest view possible in Django. To call the view, we need to map it to a URL - and for this we need a URLconf.
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
     context = { 'latest_question_list': latest_question_list }
 
     return render(request, 'pollsMod/index.html', context)
