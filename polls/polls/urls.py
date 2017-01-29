@@ -16,8 +16,13 @@ Including another URLconf
 # namespace is used to specify which module a particular view belongs to. Is used on links in templates
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
 
 urlpatterns = [
     url(r'^polls/', include('pollsMod.urls', namespace="polls")),
     url(r'^admin/', admin.site.urls),
+    url(r'^login', views.login, name='login'),
+    url(r'^logout', views.logout, name='logout'),
+    url(r'^createUser', views.createNewUser, name='createUser'),
+    url(r'^', views.index, name='register'),    
 ]
